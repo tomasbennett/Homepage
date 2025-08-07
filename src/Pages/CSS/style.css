@@ -27,9 +27,11 @@ body{
     align-items: center;
     justify-content: center;
 
-    background-color: black;
+    background-color: rgb(58, 58, 58);
     color: white;
 
     width: 100dvw;
     height: 100dvh;
 }
+
+
