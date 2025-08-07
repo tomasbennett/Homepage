@@ -24,6 +24,7 @@ body{
     font-size: 1.6rem;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -35,3 +36,13 @@ body{
 }
 
 
+a.social-link{
+    width: 4rem;
+    aspect-ratio: 1;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
