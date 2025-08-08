@@ -1,18 +1,32 @@
 main{
-    flex: 1;
+    /* flex: 1; */
+    flex-shrink: 0;
 
     width: 100%;
+    max-width: 100dvw;
+    /* height: 100%; */
+    /* height: ; */
+    /* min-height: fit-content; */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    row-gap: var(--sections-row-gap);
+
+    /* margin-top: 20rem; */
+
+    /* overflow: hidden; */
+    
 }
 
 main > section{
     flex-shrink: 0;
 
     width: 100%;
+
+    color: black;
 }
 
 section > div.section-container{
@@ -22,20 +36,38 @@ section > div.section-container{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    /* row-gap: 1.5rem; */
+
+    padding: var(--body-padding);
 }
 
 section > div.section-container > h2{
     align-self: flex-start;
 
-    font-size: larger;
+    font-size: 3.5rem;
 }
 
 section > div.section-container > div.all-projects-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
 
     width: 100%;
 
+    padding: 2rem 0;
+
+}
+
+@media (width <= 75rem) { /* AND GREATER THAN A CERTAIN WIDTH FOR SMALL SCREENS??? */
+    section > div.section-container > div.all-projects-container{
+        justify-content: center;
+
+    }
 }
 
 
@@ -48,7 +80,13 @@ div.all-projects-container > div.project-container{
     align-items: center;
     justify-content: center;
 
-    width: 100%;
+    width: 25rem;
+
+    box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
+
+    border-radius: .8rem;
+
+    overflow: hidden;
 }
 
 
@@ -65,6 +103,8 @@ div.project-container > div.project-iframe-container{
     position: relative;
 
     overflow: hidden;
+
+    background-color: black;
 }
 
 
@@ -75,8 +115,10 @@ div.project-container > div.project-iframe-container iframe{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(0.32);
     transform-origin: center;
+
+    pointer-events: none;
 }
 
 
@@ -84,26 +126,84 @@ div.project-container > div.project-iframe-container iframe{
 /* IFRAME IFRAME IFRAME */
 
 
+/* @media (aspect-ratio <= 0.284), (aspect-ratio > 0.693) {
+    div.project-container > div.project-iframe-container iframe{
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+} */
+
+@media (width <= 47.5rem) {
+    div.project-container > div.project-iframe-container iframe{
+        transform: translate(-50%, -50%) scale(0.45);
+    }
+}
+
+@media (width <= 25rem) {
+    div.project-container > div.project-iframe-container iframe{
+        transform: translate(-50%, -50%) scale(0.65);
+    }
+}
+
+@media (height <= 33.125rem) {
+    div.project-container > div.project-iframe-container iframe{
+        transform: translate(-50%, -50%) scale(0.65);
+    }
+}
+
+
+
+
+
+
+
 /* PROJECT DESCRIPTION CONTAINER */
 
 div.project-container > div.project-description-container{
     flex-shrink: 0;
     
+    position: relative;
+
     width: 100%;
+    height: 14rem;
+    min-height: fit-content;
 
     display: grid;
     grid-template-areas: "title links"
                          "desc desc";
     grid-template-rows: auto
                         1fr;
+
+    padding: 1rem;
+
+    row-gap: 1rem;
+
+    overflow-y: auto;
+
+    /* box-shadow: inset 0 .2rem 1rem black; */
 }
+
+div.project-container > div.project-description-container::before{
+    content: '';
+
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 1rem;
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.575), transparent);
+}
+
+
 
 div.project-description-container h4.project-title{
     grid-area: title;
 
     margin: auto 0;
 
-    font-size: 2.2rem;
+    font-size: 2rem;
 
     font-weight: bold;
 
@@ -118,10 +218,14 @@ div.project-description-container nav.project-social-links{
     justify-content: flex-end;
 
     width: 100%;
+
+    column-gap: 1rem;
 }
 
 div.project-description-container p{
     grid-area: desc;
+
+    font-size: 1.5rem;
 
 
 }
